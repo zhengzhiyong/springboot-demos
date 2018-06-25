@@ -1,0 +1,315 @@
+/*文章管理样式表*/
+.article-main{
+    min-width: 825px;
+    margin: 15px auto;
+    font-family: 'simsun';
+}
+.article-main input{
+    padding-left: 6px;
+}
+.article-main input:focus{
+    border: 1px solid #288DF0;
+}
+.article-header{
+    background-color: #ffffff;
+    padding: 20px;
+    color: #333333;
+}
+.article-header>label{
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+    height: 35px;
+    line-height: 34px;
+    padding: 0 12px;
+    vertical-align: bottom;
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin-right: -7px;
+}
+.article-header>label + input,
+.article-header>label + select{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: 35px;
+}
+.article-header>input{
+    border: 1px solid #CCCCCC;
+}
+#articleTitle{
+    margin-right: 5%;
+}
+#articleClassify{
+    height: 35px;
+    border: 1px solid #CCCCCC;
+}
+.article-header>input[type=button]{
+    font-size: 14px;
+    margin-left: 20px;
+    padding: 6px 12px 6px 35px;
+    background: #deeefd url(../img/icons-bg.png) 10px -47px;
+    border: 1px solid #81c0fe;
+}
+.article-btn{
+    width: 100%;
+    text-align: right;
+}
+ .special-add {
+    margin:auto 10px 20px;
+    padding: 6px 20px;
+}
+
+.article-syn{
+    margin: 10px 20px;
+    padding: 6px 20px;
+}
+
+.article-table{
+    width: 100%;
+}
+.article-table th,
+.article-table td{
+    border-right: 1px solid #ffffff;
+    text-align: center;
+    color: #333333;
+    height: 40px;
+}
+.article-table th:last-of-type,
+.article-table td:last-of-type{
+    border-right: none;
+}
+.article-table th{
+    background-color: #dddddd;
+    font-weight: bold;
+    font-size: 14px;
+}
+.article-table td{
+}
+.article-table tr:nth-of-type(2n){
+    background-color: #ebebeb;
+}
+.article-table tr:nth-of-type(2n+1){
+    background-color: #FFFFFF;
+}
+.article-table td>span{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    cursor: pointer;
+    margin: 0px 3px 3px;
+    vertical-align: middle;
+    background: url("../img/new-icon.png") no-repeat;
+}
+.article-table td>span.article-preview{
+    background-position: -160px -80px;
+}
+.article-table td>span.article-edit{
+    background-position: -243px 3px;
+}
+.article-table td>span.article-delete{
+    background-position: -540px 3px;
+}
+.article-table td>span.article-release{
+    background-position: -702px 3px;
+}
+.article-table td>span.article-withdraw{
+    background-position: -625px 3px;
+}
+
+/*文章新增页面*/
+.article-addpage{
+    display: none;
+    color: #666666;
+}
+.add-title{
+    height: 60px;
+    line-height: 60px;
+    background-color: #3093fb;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}
+.add-title span{
+    margin: 0px;
+}
+.add-title>span:first-child{
+    margin-left: 20px;
+    padding-left: 40px;
+    background: url("../img/u33.png") center left no-repeat;
+}
+.add-title>span:last-child{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background: url("../img/u37.png") center center no-repeat;
+}
+.article-addpage>form{
+    padding: 15px;
+    margin: 0;
+}
+.article-addpage>form>div{
+    padding: 10px 0;
+}
+.article-addpage label{
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 85px;
+    text-align: left;
+}
+.article-addpage label i{
+    color: red;
+    display: inline-block;
+    padding-right: 5px;
+}
+.article-addpage label.label-left{
+    margin-left: 0px;
+}
+.article-addpage select{
+    width: 300px;
+    height: 30px;
+}
+.article-addpage span{
+    display: inline-block;
+    margin-left: 30px;
+}
+.article-addpage > form > div.add-btn{
+    border-bottom: none;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 35px;
+}
+.add-btn>button{
+    width: 110px;
+    height: 30px;
+    background-color: #288DF0;
+    border: 1px solid #43A4FF;
+    color: white;
+    border-radius: 5px;
+    margin: 0 20px;
+
+}
+.add-btn>button:hover{
+    background-color: #43A4FF;
+    border: 1px solid #288DF0;
+}
+.add-show{
+    width: 70px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #b4b4b4;
+    border: 1px solid #CCCCCC;
+    color: white;
+    display: inline-block;
+}
+.add-show label{
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    width: 32px;
+    height: 18px;
+    cursor: pointer;
+}
+.add-show label.add-checked{
+    background-color: white;
+    border-radius: 10px;
+    color: #333333;
+}
+.add-show input{
+    display: none;
+}
+#article-look{
+    display: none;
+}
+#article-look span{
+    margin: 0;
+}
+#article-look span.fn-left{
+    margin-left: 20px;
+}
+#article-look .article-content span{
+    margin-right: 20px;
+}
+.article-content{
+    padding: 20px;
+    height: 675px;
+    overflow: scroll;
+}
+.article-content>div{
+    margin-top: 20px;
+    border-top: 1px solid #CCCCCC;
+    word-break: break-all;
+}
+.article-model{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1234;
+    background-color: rgba(60,60,60,0.6);
+    display: none;
+}
+.bootstrap-table{
+    padding: 0 20px;
+}
+.edui-container span{
+    margin: 0;
+    padding: 0;
+}
+.article-addpage input[type=text],
+.article-addpage input[type=url],
+.article-addpage .a-input{
+    margin: 0px;
+    height: 30px;
+    width: 300px;
+    line-height: 30px;
+}
+#article-look .article-content .a-input{
+    margin: 0;
+}
+
+.article-header .select-op{
+    width: 180px;
+}
+
+
+
+
+
+
+.main-ul {
+    min-height: 40px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2f4050;
+    padding: 0 20px;
+}
+
+.main-ul>li {
+    float: left;
+    color: #2f4050;
+    font-size: 14px;
+    margin-bottom: 0;
+    height: 100%;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.main-ul>li.active {
+    background: #2f4050;
+    color: #fff;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.article-table td>span{
+    display:inline;
+    background:none;
+}
+.articleContent_add {
+    margin:auto 10px 20px;
+    padding: 6px 20px;
+}

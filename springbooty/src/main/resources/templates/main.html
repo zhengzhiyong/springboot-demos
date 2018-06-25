@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link th:href="@{/static/css/bootstrap/bootstrap.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/css/bootstrap/bootstrap-table.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/static/js/jquery/jquery-1.11.3.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/jquery.bootstrap.teninedialog.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap/js/bootstrap-table.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap/js/bootstrap-table-zh-CN.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap/js/jquery.bootstrap.teninedialog.min.js}"></script>
+    <link th:href="@{/static/layer-v3.1.0/theme/default/layer.css}"/>
+    <script type="text/javascript" th:src="@{/static/layer-v3.1.0/layer.js}"></script>
+    <link th:href="@{/static/css/article.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+        <p align="center">登录成功!欢迎[[${user.name}]]您</p>
+        <p th:text="${user.name}"></p>
+        <section class="content-header">
+            <h1>用户管理</h1>
+        </section>
+
+        <section class="content table-content">
+            <!-- 工具栏 -->
+            <div id="toolbar">
+                <input type="button" value="新增用户" id="addBtn" class="btn btn-primary" onclick="add()"/>
+            </div>
+
+            <table data-classes="article-table"
+                   data-toggle="table"
+                   data-url="/user/getUserList"
+                   data-pagination="true"
+                   data-side-pagination="server"
+                   id="userTable"
+                   data-cache="false"
+                   data-query-params="queryParam"
+                   data-page-size="15"
+                   data-page-list="[]">
+                <thead>
+                <tr>
+                    <th data-field="id" data-width="10%">ID</th>
+                    <th data-field="account" data-width="20%">账号</th>
+                    <th data-field="name" data-width="20%">名字</th>
+                    <th data-field="nickName" data-width="20%">昵称</th>
+                    <th data-formatter="operation" data-width="20%">操作</th>
+                </tr>
+                </thead>
+            </table>
+        </section>
+
+<script type="text/javascript">
+    $(function () {
+        $('#userTable').bootstrapTable();
+    });
+
+    function queryParam(params){
+        return "startRow="+params.offset+"&pageSize="+params.limit;
+    }
+
+    function operation(value, row, index) {
+        var formatter = '<a style="cursor: pointer;" title="查看" onclick="view('+row.id+')">查看</a>&nbsp;' +
+                '<a style="cursor: pointer;" title="编辑" onclick="edit('+row.id+')">编辑</a>';
+        if(!(row.account.indexOf("admin")>=0)){
+            formatter += '&nbsp;<a style="cursor: pointer;" title="删除" onclick="del('+row.id+')">删除</a>';
+        }
+        return formatter;
+    }
+
+    function add(){
+        layer.open({
+            type: 2,
+            title: '<span class="layer-icon  look"></span>新增用户',
+            area: ['500px', '500px'],
+            content: "/user/addUser"
+        });
+    }
+
+    function view(id){
+        //open("/user/viewUser?id="+id,"_blank","width=600,height=400,top=400px,left=400px");
+        layer.open({
+            type: 2,
+            title: '<span class="layer-icon  look"></span>修改用户',
+            area: ['500px', '500px'],
+            content: "/user/viewUser?id="+id
+        });
+    }
+
+    function edit(id){
+        layer.open({
+            type: 2,
+            title: '<span class="layer-icon  look"></span>修改用户',
+            area: ['1000px', '800px'],
+            content: "/user/editUser?id="+id
+        });
+    }
+
+    function refresh() {
+        $('#userTable').bootstrapTable('refresh',{url: '/user/getUserList'});
+    }
+    
+    function del(id){
+        layer.confirm("确定要删除该用户吗", {title: "提示信息",skin: 'pop-box'}, function () {
+            $.ajax({
+                type: 'post',
+                url: '/user/delete',
+                data: {
+                    "id":id
+                },
+                error: function (data) {
+                    alert(data.desc);
+                },
+                success: function (data) {
+                    if (data.code == 0) {
+                        layer.msg("操作成功", {
+                            time: 1000
+                        }, function () {
+                            refresh();
+                        });
+                    } else {
+                        layer.msg("操作失败", {time: 2000});
+                    }
+                }
+            });
+        });
+    }
+</script>
+</body>
+</html>

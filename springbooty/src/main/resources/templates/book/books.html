@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学校列表</title>
+</head>
+    <body>
+        <table>
+            <tr>
+                <td>学校名称</td><td>地址</td><td>教师人数</td><td>学生人数</td>
+            </tr>
+            <#list list as bootySchool>
+                <tr>
+                    <td>${bootySchool.name}</td><td>${bootySchool.address}</td><td>${bootySchool.teacherNumber}</td><td>${bootySchool.studentNumber}</td>
+                </tr>
+            </#list>
+        </table>
+    </body>
+</html>

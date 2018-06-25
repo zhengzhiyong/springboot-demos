@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新增用户</title>
+    <script type="text/javascript" th:src="@{/static/js/jquery/jquery-1.11.3.min.js}"></script>
+    <link th:href="@{/static/layer-v3.1.0/theme/default/layer.css}"/>
+    <script type="text/javascript" th:src="@{/static/layer-v3.1.0/layer.js}"></script>
+</head>
+<body>
+    <div>
+        账号:<input name="account" id="account"><br/>
+        名字:<input name="name" id="name"><br/>
+        昵称:<input name="nickName" id="nickName"><br/>
+        <button onclick="add()">提交</button><br/>
+    </div>
+<script type="text/javascript">
+    function add() {
+        $.ajax({
+            type: 'post',
+            url: '/user/add',
+            data: {
+                "name":$('#name').val(),
+                "nickName":$('#nickName').val(),
+                "account":$("#account").val()
+            },
+            error: function (data) {
+                alert(data.desc);
+            },
+            success: function (data) {
+                if (data && data.code == 0) {
+                    layer.msg("操作成功!初始密码12345678", {
+                        time: 1000
+                    }, function () {
+                        parent.refresh();
+                        parent.layer.closeAll();
+                    });
+                } else {
+                    layer.msg("操作失败!", {time: 2000});
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

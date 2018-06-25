@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户</title>
+    <script type="text/javascript" th:src="@{/static/js/jquery/jquery-1.11.3.min.js}"></script>
+    <link th:href="@{/static/layer-v3.1.0/theme/default/layer.css}"/>
+    <script type="text/javascript" th:src="@{/static/layer-v3.1.0/layer.js}"></script>
+</head>
+<body>
+<div>
+    <input id="id" th:value="${user.id}" type="hidden">
+    账号:<input name="account" id="account" th:value="${user.account}"><br/>
+    名字:<input name="name" id="name" th:value="${user.name}"><br/>
+    昵称:<input name="nickName" id="nickName" th:value="${user.nickName}"><br/>
+    <button onclick="add()">提交</button><br/>
+</div>
+<script type="text/javascript">
+    function add() {
+        $.ajax({
+            type: 'post',
+            url: '/user/update',
+            data: {
+                "id":$('#id').val(),
+                "name":$('#name').val(),
+                "nickName":$('#nickName').val(),
+                "account":$("#account").val()
+            },
+            error: function (data) {
+                alert(data.desc);
+            },
+            success: function (data) {
+                if (data && data.code == 0) {
+                    layer.msg("操作成功", {
+                        time: 1000
+                    }, function () {
+                        parent.refresh();
+                        parent.layer.closeAll();
+                    });
+                } else {
+                    layer.msg("操作失败!", {time: 2000});
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
