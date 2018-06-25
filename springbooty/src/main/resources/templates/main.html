@@ -17,11 +17,16 @@
     <link th:href="@{/static/css/article.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-        <p align="center">登录成功!欢迎[[${user.name}]]您</p>
+        <p align="center" style="position: absolute;top: 30px;left: 790px;">登录成功!欢迎[[${user.name}]]您</p>
         <p th:text="${user.name}"></p>
         <section class="content-header">
             <h1>用户管理</h1>
         </section>
+        <div style="position: absolute;top: 30px;right: 100px;">
+            <section>
+                <a th:href="@{/doLogout}" th:text="退出"></a>
+            </section>
+        </div>
 
         <section class="content table-content">
             <!-- 工具栏 -->
