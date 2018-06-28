@@ -21,3 +21,5 @@ https://www.cnblogs.com/lspz/p/6832358.html
 
 spring boot 分页插件pagehelper使用方式：
 https://blog.csdn.net/xiaolyuh123/article/details/73506189
+
+spring.factories 自动配置
