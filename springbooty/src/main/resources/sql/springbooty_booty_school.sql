@@ -1,0 +1,1 @@
+INSERT INTO springbooty.booty_school (id, name, star, address, teacher_number, student_number, introduction) VALUES (2, 'xuexiao mingcheng ', 2, 'address', 10, 20, 'introduction');
