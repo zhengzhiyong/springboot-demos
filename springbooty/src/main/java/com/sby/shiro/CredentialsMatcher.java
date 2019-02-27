@@ -6,7 +6,8 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 
 /**
- * Created by zheng on 2018/6/20.
+ * @author zhengzy
+ * @date 2018/6/20.
  */
 public class CredentialsMatcher extends SimpleCredentialsMatcher {
 
