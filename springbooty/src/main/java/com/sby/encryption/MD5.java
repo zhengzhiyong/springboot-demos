@@ -1,4 +1,4 @@
-package com.sby.md5;
+package com.sby.encryption;
 
 import java.security.MessageDigest;
 
@@ -21,14 +21,11 @@ public class MD5 {
                 if(i < 0) {
                     i += 256;
                 }
-
                 if(i < 16) {
                     buf.append("0");
                 }
-
                 buf.append(Integer.toHexString(i));
             }
-
             str = buf.toString();
             return str;
         } catch (Exception var6) {
@@ -37,7 +34,6 @@ public class MD5 {
     }
 
     public static void main(String[] args) {
-        System.out.println(md5("31119@qq.com123456"));
-        System.out.println(md5("1"));
+        System.out.println(md5("123456"));
     }
 }

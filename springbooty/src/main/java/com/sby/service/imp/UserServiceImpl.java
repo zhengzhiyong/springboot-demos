@@ -4,7 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sby.dao.mapper.UserMapper;
-import com.sby.md5.MD5;
+import com.sby.encryption.MD5;
 import com.sby.po.User;
 import com.sby.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         user.setPassword(MD5.md5("12345678"));
         user.setId(userMapper.getMaxId());
-        //userMapper.save(userMapper.getMaxId(),user.getName(),user.getNickName(),MD5.md5("12345678"),user.getAccount());
+        //userMapper.save(userMapper.getMaxId(),user.getName(),user.getNickName(),MD5.encryption("12345678"),user.getAccount());
         userMapper.save(user);
     }
 }
